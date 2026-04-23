@@ -63,8 +63,12 @@ import authRoutes from "./routes/auth.js";
 app.use("/api/auth", authRoutes);
 
 // Protected routes (require authentication)
+import userRoutes from "./routes/users.js";
 
-// =======================ERROR HANDLING================
+// Apply authentication middleware to all user routes
+app.use("/api/users", authenticationToken, userRoutes);
+
+// ===========s============ERROR HANDLING================
 
 // 404 handler
 app.use(notFound);
