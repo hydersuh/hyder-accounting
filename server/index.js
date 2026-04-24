@@ -64,9 +64,11 @@ app.use("/api/auth", authRoutes);
 
 // Protected routes (require authentication)
 import userRoutes from "./routes/users.js";
+import mainAccountRoutes from "./routes/mainAccounts.js";
 
 // Apply authentication middleware to all user routes
 app.use("/api/users", authenticationToken, userRoutes);
+app.use("/api/main-accounts", authenticationToken, mainAccountRoutes);
 
 // ===========s============ERROR HANDLING================
 
