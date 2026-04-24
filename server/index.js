@@ -13,7 +13,7 @@ import {
   xssProtection,
 } from "./middleware/security.js";
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
-import { authenticationToken } from "./middleware/auth.js";
+import { authenticationToken, requirePermission } from "./middleware/auth.js";
 
 // Load environmwnt variables
 
@@ -65,10 +65,12 @@ app.use("/api/auth", authRoutes);
 // Protected routes (require authentication)
 import userRoutes from "./routes/users.js";
 import mainAccountRoutes from "./routes/mainAccounts.js";
+import journalRoutes from "./routes/journal.js";
 
 // Apply authentication middleware to all user routes
 app.use("/api/users", authenticationToken, userRoutes);
 app.use("/api/main-accounts", authenticationToken, mainAccountRoutes);
+app.use("/api/journal", authenticationToken, journalRoutes);
 
 // ===========s============ERROR HANDLING================
 
